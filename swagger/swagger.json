@@ -1,0 +1,62 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Got Api",
+        "version": "1.0.0",
+        "title": "API",
+        "contact": {
+            "email": ""
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:5000",
+    "basePath": "/",
+    "paths": {
+        "/ping" : {
+            "get" : {
+                "summary" : "Get the api status",
+                "description" : "Ping Pong",
+                "tags" : [
+                    "Ping Pong"
+                ],
+                "produces" : [
+                    "application/json"
+                ],
+                "parameters " : [],
+                "responses" : {
+                    "200" : {
+                        "description" : "OK"
+                    },
+                    "400" : {
+                        "description" : "Bad Request"
+                    }
+                }
+            }
+        },
+        "/repositorylist": {
+            "get" : {
+                "summary" : "Get all the available repositories",
+                "description" : "Get all the available repositories",
+                "produces" : [
+                    "application/json"
+                ],
+                "tags" : [
+                    "Repositories"
+                ],
+                "parameters" : [],
+                "responses" : {
+                    "200" : {
+                        "description" : "The currently available repositories"
+                    },
+                    "404" : {
+                        "description" : "No repositories available"
+                    }
+                }
+            }
+        }
+    }
+}
