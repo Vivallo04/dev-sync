@@ -14,7 +14,7 @@
     },
     "schemes": ["http"],
     "host": "localhost:5000",
-    "basePath": "/",
+    "basePath": "/api",
     "paths": {
         "/ping" : {
             "get" : {
@@ -26,7 +26,6 @@
                 "produces" : [
                     "application/json"
                 ],
-                "parameters " : [],
                 "responses" : {
                     "200" : {
                         "description" : "OK"
@@ -47,7 +46,6 @@
                 "tags" : [
                     "Repositories"
                 ],
-                "parameters" : [],
                 "responses" : {
                     "200" : {
                         "description" : "The currently available repositories"

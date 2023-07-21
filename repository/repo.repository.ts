@@ -38,7 +38,7 @@ export class RepoRepository {
                 this.logger.error("Repository: Get Got List", "No repositories found");
                 return null;
             }
-            
+
             return repositories;
 
         } catch (error) {
