@@ -4,7 +4,7 @@ import * as swaggerUi from 'swagger-ui-express';
 import * as fs from 'fs';
 import { ApiLogger } from './logger/api.logger';
 import { RepositoryController } from './controllers/repository.controller';
-
+import {Request, Response} from "express-serve-static-core";
 
 
 class App {
@@ -16,8 +16,7 @@ class App {
     private swaggerFile: any = (process.cwd()+"/swagger/swagger.json");
     private swaggerData: any = fs.readFileSync(this.swaggerFile, 'utf8');
     private swaggerDocument = JSON.parse(this.swaggerData);
-
-
+    private apiBasePath: string = "/api";
 
     constructor() {
         this.express = express();
@@ -34,14 +33,13 @@ class App {
     }
 
     private setRoutes(): void {
-
-        this.express.get("/ping", (req, res, next) => {
+        this.express.get(this.apiBasePath + "/ping", (req: Request, res: Response, next) => {
             this.logger.debug("🌟 Controller: Ping");
             res.send("Pong!");
         });
         
         // handle repository routes
-        this.express.get("/repositorylist", (req, res, next) => {
+        this.express.get(this.apiBasePath + "/repositorylist", (req, res, next) => {
             this.logger.debug("🌟 Controller: Get Repository List");
 
             try {
@@ -53,11 +51,9 @@ class App {
             }
         });
 
-
         // swagger docs
         this.express.use('/', swaggerUi.serve,
             swaggerUi.setup(this.swaggerDocument, null, null));
-
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {
