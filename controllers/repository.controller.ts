@@ -10,8 +10,8 @@ export class RepositoryController {
         this.logger = new ApiLogger();
         this.logger.debug("👾 Initiating Repository Controller");
     }
-    
-    public async getRepositoryList(req, res) {
+
+    public async getRepositoryList(req: Request, res: Response) {
         this.logger.debug("🌟 Controller: Get Repository");
         try {
             const repositories = await this.repositoryService.getRepositoryList();
@@ -25,5 +25,4 @@ export class RepositoryController {
             res.status(500).send("Internal server error.");
         }
     }
-
 }
