@@ -4,7 +4,7 @@ import * as swaggerUi from 'swagger-ui-express';
 import * as fs from 'fs';
 import { ApiLogger } from './logger/api.logger';
 import { RepositoryController } from './controllers/repository.controller';
-import {Request, Response} from "express-serve-static-core";
+import { Request, Response } from "express-serve-static-core";
 
 
 class App {
@@ -43,6 +43,7 @@ class App {
             this.logger.debug("🌟 Controller: Get Repository List");
 
             try {
+                // @ts-ignore
                 this.repositoryController.getRepositoryList(req, res).then((data) => {
                     res.send(data);
                 });
