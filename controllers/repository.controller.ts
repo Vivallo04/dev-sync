@@ -13,7 +13,6 @@ export class RepositoryController {
     
     public async getRepositoryList(req, res) {
         this.logger.debug("🌟 Controller: Get Repository");
-
         try {
             const repositories = await this.repositoryService.getRepositoryList();
 
